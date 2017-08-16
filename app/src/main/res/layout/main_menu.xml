@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/backgroundofmainactivity"
+    tools:context="com.example.mateusz.client.MainMenu"
+    >
+
+
+
+
+    <Button
+        android:layout_width="500dp"
+        android:id="@+id/manageDataFromFile"
+        android:layout_marginBottom="33dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_height="50dp"
+        android:text="Get last used Port and IP Address" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Ip address..."
+        android:ems="10"
+        android:id="@+id/ipAdress"
+        style="@style/Widget.AppCompat.EditText"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColorLink="@android:color/holo_red_dark"
+        android:textColorHint="?android:attr/windowBackground"
+        android:textColor="@android:color/background_dark"
+        android:layout_below="@+id/port"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Port..."
+        android:ems="10"
+        android:id="@+id/port"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColorLink="@android:color/holo_red_dark"
+        android:textColor="@android:color/background_dark"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:text="Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/startConnection"
+        android:background="@drawable/startbutton"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
