@@ -1,0 +1,2 @@
+ While pressing START button, make sure connection is estabilished between client and server,
+if not, send a message like "sorry, couldn't reach server, make sure IP Address and Ports are correct"
