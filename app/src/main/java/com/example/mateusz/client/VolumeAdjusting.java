@@ -1,16 +1,8 @@
 package com.example.mateusz.client;
 
 
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.net.UnknownHostException;
-
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.telephony.PhoneStateListener;
@@ -18,6 +10,11 @@ import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class VolumeAdjusting extends Activity implements View.OnClickListener {
 
@@ -108,6 +105,7 @@ public class VolumeAdjusting extends Activity implements View.OnClickListener {
 
     public static void createSocketWithGivenMessage(final String message)
     {
+        System.out.println("dupa");
         new Thread(new Runnable() {
 
             @Override
@@ -115,16 +113,24 @@ public class VolumeAdjusting extends Activity implements View.OnClickListener {
 
                 try {
                     Socket client = new Socket(MainMenu.getIpAdress(), MainMenu.getPort());
-                    PrintWriter printwriter = new PrintWriter(client.getOutputStream(), true);
-                    printwriter.write(message);
-                    printwriter.flush();
-                    printwriter.close();
-                    client.close();
+
+
+                        PrintWriter printwriter = new PrintWriter(client.getOutputStream(), true);
+                        printwriter.write(message);
+                        printwriter.flush();
+                        printwriter.close();
+                        client.close();
+
+
+
                 } catch (UnknownHostException e) {
-                    e.printStackTrace();
+
+                                        //JAK POLACZYC THREAD Z MOZLIWOSCIA OTWARCIA AKTYWNOSCI MAINMENU ZA POMOCA INTENT
+                    throw new RuntimeException("Sorry, but you're not connected to proper server");
+
                 } catch (IOException e) {
 
-                    e.printStackTrace();
+                    throw new RuntimeException("Sorry, but you're not connected to proper server");
                 }
             }
         }).start();

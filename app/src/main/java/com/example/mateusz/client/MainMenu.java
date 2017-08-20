@@ -1,14 +1,9 @@
 package com.example.mateusz.client;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
@@ -108,11 +103,9 @@ public void onClick(View v) {
 
                 getTextFromBothTextFields();
 
-
                 if(fieldsAreCorrect())
                 {
-                    openVolumeAdjustingActivity();
-
+                        openVolumeAdjustingActivity();
                 }
                 else
                 {
@@ -138,6 +131,8 @@ public void onClick(View v) {
 
                }
          }
+
+
 public void getTextFromBothTextFields()
 {
     String tempTextFromIpEditText =  writeIpAddress.getText().toString();
@@ -224,17 +219,8 @@ public boolean fieldsAreCorrect()
         ipAddressFromEditText = writeIpAddress.getText().toString();
         portFromEditText = writePort.getText().toString();
 
-
-
-        if(portIsNumber(portFromEditText) &&
-           ipAddressIsWrittenProperly(ipAddressFromEditText))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return portIsNumber(portFromEditText) &&
+                    ipAddressIsWrittenProperly(ipAddressFromEditText);
 
     }
 
@@ -271,7 +257,7 @@ public void getDisplaysPixels()
         display.getSize(size);
         int width = size.x;
         int height = size.y;
-        System.out.println(width+"  " + height);
+      //  System.out.println(width+"  " + height);
 
     }
 

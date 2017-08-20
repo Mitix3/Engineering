@@ -8,7 +8,7 @@ import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
 
-public class FirstActivity extends Activity {
+public  class FirstActivity extends Activity {
 
     private static final int STOPSPLASH = 0;
     //time in milliseconds
