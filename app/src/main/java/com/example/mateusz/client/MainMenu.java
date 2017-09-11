@@ -101,7 +101,7 @@ public void onClick(View v) {
               //  getDisplaysPixels();
                 createFileIfNeeded();
 
-                getTextFromBothTextFields();
+                saveTextFromBothTextFieldsIntoFile();
 
                 if(fieldsAreCorrect())
                 {
@@ -118,6 +118,8 @@ public void onClick(View v) {
 
                 createFileIfNeeded();
 
+                saveTextFromBothTextFieldsIntoFile();
+
                 readDataFromFile();
 
                 String textFromFile = new String(bytes);
@@ -126,6 +128,9 @@ public void onClick(View v) {
 
                 writeStringsToBothTextFields();
 
+                Toast.makeText(MainMenu.this, textFromFile,
+                        Toast.LENGTH_LONG).show();
+
             default:
                 break;
 
@@ -133,17 +138,17 @@ public void onClick(View v) {
          }
 
 
-public void getTextFromBothTextFields()
+public void saveTextFromBothTextFieldsIntoFile()
 {
     String tempTextFromIpEditText =  writeIpAddress.getText().toString();
     String tempTextFromPortEditText = writePort.getText().toString();
-    String concatenateAbove = tempTextFromIpEditText + " " + tempTextFromPortEditText;
+    String concatenateStringsFromEditTexts = tempTextFromIpEditText + " " + tempTextFromPortEditText;
 
     try {
         PrintWriter pw = new PrintWriter(fileToReadSave);
         pw.close();
         FileOutputStream stream = new FileOutputStream(fileToReadSave);
-        stream.write(concatenateAbove.getBytes());
+        stream.write(concatenateStringsFromEditTexts.getBytes());
     } catch(IOException e)
     {
         Toast.makeText(MainMenu.this, "Error writing data to file, try again...",
@@ -174,13 +179,16 @@ public void divideTextFromFileIntoIpAndPortParts(String textFromFile)
 
         }
         if(!textFromFile.contains(" "))
-        {
-            throw new RuntimeException("File's content is formatted in weird way...");
+        {   Toast.makeText(MainMenu.this, textFromFile,
+                Toast.LENGTH_LONG).show();
+            Toast.makeText(MainMenu.this, "egeszege, test",
+                    Toast.LENGTH_LONG).show();
         }
 
 }
 public void readDataFromFile()
 {
+// fileToReadSave = new File (path + "IpPort.txt");
     int length = (int) fileToReadSave.length();
 
     bytes = new byte[length];
@@ -200,20 +208,29 @@ public void readDataFromFile()
         }
         catch(IOException e1)
         {
-            Toast.makeText(MainMenu.this, "Error while closing FileInputStream",
+            Toast.makeText(MainMenu.this, "Error while closing File...",
                     Toast.LENGTH_LONG).show();
         }
     }
 }
 public void createFileIfNeeded()
-{
-    if(fileToReadSave==null || !fileToReadSave.exists()) {
-        fileToReadSave = new File(path, "IpPort.txt");
+{       //deleteFile("IpPort.txt");
 
-    }
+        fileToReadSave = new File(path + "/IpPort.txt");
+
+        try {
+            fileToReadSave.createNewFile(); //it only creates file, when it doesn't exist
+            }
+        catch(IOException e)
+            {
+            Toast.makeText(MainMenu.this, "Error while creating a file, try again...",
+                        Toast.LENGTH_LONG).show();
+            }
+
+}
 
 
-    }
+
 public boolean fieldsAreCorrect()
 {
         ipAddressFromEditText = writeIpAddress.getText().toString();
