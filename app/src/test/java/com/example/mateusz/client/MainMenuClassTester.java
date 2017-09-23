@@ -1,15 +1,11 @@
 package com.example.mateusz.client;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
-import java.util.Date;
-import java.util.regex.Pattern;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -45,7 +41,7 @@ public class MainMenuClassTester {
     }
 
 
-    @Test (expected = RuntimeException.class)
+
     public void checkDivideTextFromFileIntoIpAndPortParts(){
 
         try
@@ -58,7 +54,7 @@ public class MainMenuClassTester {
             assertEquals(message, re.getMessage());
             throw re;
         }
-        fail("Employee Id Null exception did not throw!");
+
     }
     @Test
     public void checkDivideTextFromFileIntoIpAndPortPartsNextCondition() {

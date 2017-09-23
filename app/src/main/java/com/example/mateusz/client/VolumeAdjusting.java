@@ -126,11 +126,11 @@ public class VolumeAdjusting extends Activity implements View.OnClickListener {
                 } catch (UnknownHostException e) {
 
                                         //JAK POLACZYC THREAD Z MOZLIWOSCIA OTWARCIA AKTYWNOSCI MAINMENU ZA POMOCA INTENT
-                    throw new RuntimeException("Sorry, but you're not connected to proper server");
+                    //DOPISAC SENSOWNY KOD -> WYSWIETLENIE INFO, ZE USER COS NAMOTAL W WPISYWANIU HOSTA
 
                 } catch (IOException e) {
 
-                    throw new RuntimeException("Sorry, but you're not connected to proper server");
+
                 }
             }
         }).start();

@@ -62,7 +62,8 @@ public class MainMenu extends Activity implements View.OnClickListener{
         ImageButton startConnection = (ImageButton)findViewById(R.id.startConnection);
             startConnection.setOnClickListener(this);
 
-
+        Toast.makeText(MainMenu.this, fileToReadSave +"",
+                Toast.LENGTH_LONG).show();
 
         writeIpAddress = (EditText)findViewById(R.id.ipAdress);
         writePort = (EditText)findViewById(R.id.port);
@@ -118,8 +119,6 @@ public void onClick(View v) {
 
                 createFileIfNeeded();
 
-                saveTextFromBothTextFieldsIntoFile();
-
                 readDataFromFile();
 
                 String textFromFile = new String(bytes);
@@ -128,11 +127,10 @@ public void onClick(View v) {
 
                 writeStringsToBothTextFields();
 
-                Toast.makeText(MainMenu.this, textFromFile,
-                        Toast.LENGTH_LONG).show();
+                break;
 
             default:
-                break;
+                throw new RuntimeException("This should never happen...");
 
                }
          }
@@ -179,10 +177,9 @@ public void divideTextFromFileIntoIpAndPortParts(String textFromFile)
 
         }
         if(!textFromFile.contains(" "))
-        {   Toast.makeText(MainMenu.this, textFromFile,
+        {   Toast.makeText(MainMenu.this, "Something went wrong...try again.",
                 Toast.LENGTH_LONG).show();
-            Toast.makeText(MainMenu.this, "egeszege, test",
-                    Toast.LENGTH_LONG).show();
+
         }
 
 }
