@@ -1,2 +1,4 @@
  While pressing START button, make sure connection is estabilished between client and server,
-if not, send a message like "sorry, couldn't reach server, make sure IP Address and Ports are correct"
+if not, send a message like "sorry, couldn't reach server, make sure IP Address and Ports are correct" - partially completed
+
+Reset the variable content of increasing/decreasing volume speed after pressing return button (reset it on server i guess)
